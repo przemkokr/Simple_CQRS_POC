@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AppDbContext\" />
-    <Folder Include="Mappings\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Simple_CQRS_POC.Domain\Simple_CQRS_POC.Domain.csproj" />
   </ItemGroup>
 
 </Project>
