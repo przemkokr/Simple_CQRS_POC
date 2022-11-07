@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="CommandHandlers\" />
+    <Folder Include="QueryHandlers\" />
+  </ItemGroup>
+
 </Project>
