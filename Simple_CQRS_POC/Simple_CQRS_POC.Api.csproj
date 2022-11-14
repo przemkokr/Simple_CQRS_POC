@@ -17,4 +17,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Simple_CQRS_POC.Persistance\Simple_CQRS_POC.Persistance.csproj" />
+  </ItemGroup>
+
 </Project>
