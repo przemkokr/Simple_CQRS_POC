@@ -22,6 +22,11 @@ namespace Simple_CQRS_POC.Persistance.AppDbContext
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+
+            modelBuilder.Entity<Auction>(entity =>
+            {
+                entity.HasData
+            })
         }
     }
 }
