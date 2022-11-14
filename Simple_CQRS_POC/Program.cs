@@ -1,10 +1,16 @@
 using Microsoft.EntityFrameworkCore;
+using Simple_CQRS_POC.Api.Configuration;
+using Simple_CQRS_POC.Application.QueryHandlers.Auctions;
 using Simple_CQRS_POC.Domain.Repositories;
 using Simple_CQRS_POC.Persistance.AppDbContext;
 using Simple_CQRS_POC.Persistance.Repository;
+using System.Reflection;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatorHandlers(typeof(GetAuctionsQueryHandler).GetTypeInfo().Assembly);
 
 builder.Services.AddDbContext<ApplicationDbContext>(opts =>
 {

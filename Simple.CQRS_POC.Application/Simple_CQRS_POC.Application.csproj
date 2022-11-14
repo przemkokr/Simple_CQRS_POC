@@ -8,7 +8,15 @@
 
   <ItemGroup>
     <Folder Include="CommandHandlers\" />
-    <Folder Include="QueryHandlers\" />
+    <Folder Include="QueryHandlers\Bids\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Simple_CQRS_POC.Domain\Simple_CQRS_POC.Domain.csproj" />
   </ItemGroup>
 
 </Project>
