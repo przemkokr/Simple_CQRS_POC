@@ -5,5 +5,6 @@ namespace Simple_CQRS_POC.Application.QueryHandlers.Auctions
 {
     public class GetAuctionsQuery : IQuery<IEnumerable<Auction>>
     {
+        public bool ActiveOnly { get; set; }
     }
 }

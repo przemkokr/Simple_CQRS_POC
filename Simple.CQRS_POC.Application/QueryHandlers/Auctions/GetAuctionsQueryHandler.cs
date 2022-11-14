@@ -19,7 +19,12 @@ namespace Simple_CQRS_POC.Application.QueryHandlers.Auctions
 
             var auctions = auctionRepository.GetAll();
 
-            return auctions.Where(a => a.EndDate > DateTime.Now).AsEnumerable();
+            if (request.ActiveOnly)
+            {
+                auctions = auctions.Where(a => a.EndDate > DateTime.Now && !a.IsSold);
+            }
+
+            return auctions.AsEnumerable();
         }
     }
 }

@@ -61,11 +61,12 @@ namespace Simple_CQRS_POC.Domain.Entities
             this.BuyNowValue = buyNowValue;
         }
 
-        public void AddBid(Bid bid)
-        {
-            Winner = bid.Bidder;
-            this.Bids.Add(bid);
-            CurrentValue = bid.BidAmount;
+        public void AddBid(string bidder, decimal bidAmount)
+        {            
+            this.Bids.Add(new Bid(this, bidder, bidAmount, DateTime.Now));
+
+            Winner = bidder;
+            CurrentValue = bidAmount;
         }
 
         public void BuyNow(string bidder)
