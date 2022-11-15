@@ -28,9 +28,9 @@ namespace Simple_CQRS_POC.Application.CommandHandlers.Auctions
                     request.IsBuyNow
                 );
 
-            if (auction.IsBuyNow)
+            if (request.IsBuyNow)
             {
-                auction.SetBuyNowValue(request.BuyNowValue.Value);
+                auction.SetBuyNowValue(request.BuyNowValue!.Value);
             }
 
             await repository.CreateAsync(auction);

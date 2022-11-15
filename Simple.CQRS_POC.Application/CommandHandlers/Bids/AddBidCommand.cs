@@ -6,7 +6,7 @@ namespace Simple_CQRS_POC.Application.CommandHandlers.Bids
     {
         public Guid Id => new Guid();
 
-        public int AuctionId { get; set; }
+        public long AuctionId { get; set; }
 
         public decimal BidAmount { get; set; }
 

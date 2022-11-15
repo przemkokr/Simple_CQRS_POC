@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Simple_CQRS_POC.Application.CommandHandlers.Auctions;
+using Simple_CQRS_POC.Application.CommandHandlers.Bids;
 using Simple_CQRS_POC.Application.QueryHandlers.Auctions;
 using Simple_CQRS_POC.Application.QueryHandlers.Bids;
 using Simple_CQRS_POC.Domain.Entities;
@@ -34,23 +35,20 @@ namespace Simple_CQRS_POC.Api.Controllers
             return response.Id > 0 ? response.Id : 0;
         }
 
-
         [HttpGet]
         [Route("bids/{auctionId:long}")]
         public async Task<IEnumerable<Bid>> AuctionBids(long auctionId)
         {
-            var auctionBids = await mediator.Send(new GetAuctionBidsQuery() { AuctionId= auctionId });
+            var auctionBids = await mediator.Send(new GetAuctionBidsQuery() { AuctionId = auctionId });
 
             return auctionBids;
         }
 
         [HttpPost]
         [Route("bids/{auctionId:long}")]
-        public async Task<IEnumerable<Bid>> Bid(long auctionId)
+        public async Task Bid([FromBody] AddBidCommand bidCommand)
         {
-            var auctionBids = await mediator.Send(new GetAuctionBidsQuery() { AuctionId = auctionId });
-
-            return auctionBids;
+            await mediator.Send(bidCommand);
         }
     }
 }
