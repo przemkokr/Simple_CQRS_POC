@@ -38,7 +38,7 @@ namespace Simple_CQRS_POC.Domain.Entities
 
         public string AuctionOwner { get; protected set; } = default!;
 
-        public string Winner { get; protected set; } = default!;
+        public string? Winner { get; protected set; }
 
         public DateTime StartDate { get; protected set; }
 

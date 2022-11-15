@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Simple_CQRS_POC.Domain.Entities;
+using Simple_CQRS_POC.Persistance.DatabaseInitializer;
 
 namespace Simple_CQRS_POC.Persistance.AppDbContext
 {
@@ -25,8 +26,11 @@ namespace Simple_CQRS_POC.Persistance.AppDbContext
 
             //modelBuilder.Entity<Auction>(entity =>
             //{
-            //    entity.HasData
-            //})
+            //    foreach (var item in SampleDataInitilizer.DataFeed())
+            //    {
+            //        entity.HasData(item);
+            //    }
+            //});
         }
     }
 }
