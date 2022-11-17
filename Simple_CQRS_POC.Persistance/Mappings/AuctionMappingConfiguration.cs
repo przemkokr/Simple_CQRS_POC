@@ -15,7 +15,7 @@ namespace Simple_CQRS_POC.Persistance.Mappings
               .IsRequired();
             builder.HasIndex(x => x.Id)
                 .IsUnique(true);
-            builder.HasOne(x => x.AuctionItem)
+            builder.HasOne(x => x.Item)
                 .WithOne(x => x.Auction)
                 .OnDelete(DeleteBehavior.Cascade);
 

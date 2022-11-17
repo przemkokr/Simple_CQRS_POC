@@ -30,7 +30,7 @@ namespace Simple_CQRS_POC.Application.CommandHandlers.Bids
 
             await repository.SaveChangesAsync();
 
-            throw new NotImplementedException();
+            return Unit.Value;
         }
     }
 }

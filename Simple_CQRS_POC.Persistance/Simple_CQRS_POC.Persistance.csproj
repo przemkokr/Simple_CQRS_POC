@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Simple_CQRS_POC.Domain\Simple_CQRS_POC.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

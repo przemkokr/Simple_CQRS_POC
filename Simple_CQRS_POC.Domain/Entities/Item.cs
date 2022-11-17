@@ -11,24 +11,25 @@ namespace Simple_CQRS_POC.Domain.Entities
             string name, 
             string description, 
             Category category,
-            bool isNew)
+            Auction auction,
+            bool isNew,
+            long id)
         {
+          //  this.Auction = auction;
+            this.AuctionId = auction.Id;
             this.Name = name;
             this.Description = description;
-            this.Category = category;
+            this.Category = (int)category;
             this.IsNew = isNew;
+            Id = id;
         }
 
-        public string Name { get; protected set; } = default!;
-
-        public string Description { get; protected set; } = default!;
-
-        public Category Category { get; protected set; }
-
+        public string Name { get; protected set; } = null!;
+        public string Description { get; protected set; } = null!;
+        public int Category { get; protected set; }
         public bool IsNew { get; protected set; }
-
         public long AuctionId { get; protected set; }
 
-        public virtual Auction Auction { get; protected set; } = default!;
+        public virtual Auction Auction { get; protected set; } = null!;
     }
 }

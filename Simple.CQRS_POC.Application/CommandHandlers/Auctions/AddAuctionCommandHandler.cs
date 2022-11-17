@@ -15,18 +15,20 @@ namespace Simple_CQRS_POC.Application.CommandHandlers.Auctions
 
         public async Task<AddAuctionResult> Handle(AddAuctionCommand request, CancellationToken cancellationToken)
         {
-            var item = new Item(request.Item.Name, request.Item.Description, request.Item.Category, request.Item.IsNew);
+         
 
             var auction = new Auction(
                     request.Title,
-                    item,
                     request.Username,
                     DateTime.Now,
                     request.EndDate,
                     request.Description,
                     request.InitialValue,
-                    request.IsBuyNow
+                    request.IsBuyNow,
+                    (new Random()).Next(1000, 1000000)
                 );
+
+            var item = new Item(request.Item.Name, request.Item.Description, request.Item.Category, auction, request.Item.IsNew, (new Random()).Next(1000, 1000000));
 
             if (request.IsBuyNow)
             {
