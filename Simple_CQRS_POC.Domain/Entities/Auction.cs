@@ -7,54 +7,46 @@ namespace Simple_CQRS_POC.Domain.Entities
     {
         protected Auction() 
         {
-            this.Bids = new List<Bid>();
+            Bids = new HashSet<Bid>();
             this.IsSold = false;
         }
 
         public Auction(
             string title, 
-            Item auctionItem, 
             string auctionOwner,
             DateTime startDate,
             DateTime endDate,
             string description,
             decimal currentValue,
-            bool isBuyNow)
+            bool isBuyNow, 
+            long id)
             : this()
         {
+            Id = id;
             this.Title = title;
-            AuctionItem = auctionItem;
             AuctionOwner = auctionOwner;
             StartDate = startDate;
             EndDate = endDate;
             Description = description;
             CurrentValue = currentValue;
-            IsBuyNow = isBuyNow;
+            IsBuyNow = isBuyNow;            
         }
 
-        public string Title { get; protected set; } = default!;
-
-        public Item AuctionItem { get; protected set; } = default!;
-
-        public string AuctionOwner { get; protected set; } = default!;
-
+        public long Id { get; protected set; }
+        public string Title { get; protected set; } = null!;
+        public string AuctionOwner { get; protected set; } = null!;
         public string? Winner { get; protected set; }
-
         public DateTime StartDate { get; protected set; }
-
         public DateTime EndDate { get; protected set; }
-
-        public string Description { get; protected set; } = default!;
-
+        public string Description { get; protected set; } = null!;
         public decimal CurrentValue { get; protected set; }
-
         public bool IsBuyNow { get; protected set; }
-
         public bool IsSold { get; protected set; }
-
         public decimal? BuyNowValue { get; protected set; }
 
-        public ICollection<Bid> Bids { get; protected set; }
+        public virtual Item? Item { get; protected set; }
+        public virtual ICollection<Bid> Bids { get; protected set; }
+
 
         public void SetBuyNowValue(decimal buyNowValue)
         {
@@ -63,7 +55,7 @@ namespace Simple_CQRS_POC.Domain.Entities
 
         public void AddBid(string bidder, decimal bidAmount)
         {            
-            this.Bids.Add(new Bid(this, bidder, bidAmount, DateTime.Now));
+            this.Bids.Add(new Bid(this, bidder, bidAmount, DateTime.Now, (new Random()).Next(1000, 1000000)));
 
             Winner = bidder;
             CurrentValue = bidAmount;

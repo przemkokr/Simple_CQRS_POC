@@ -1,7 +1,10 @@
-﻿namespace Simple_CQRS_POC.Domain.Base
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Simple_CQRS_POC.Domain.Base
 {
     public abstract class EntityBase
     {
-        public long Id { get; }
+        [Required]
+        public long Id { get; protected set; }
     }
 }

@@ -6,22 +6,22 @@ namespace Simple_CQRS_POC.Domain.Entities
     {
         protected Bid() { }
 
-        public Bid(Auction auction, string bidder, decimal bidAmount, DateTime biddingDate)
+        public Bid(Auction auction, string bidder, decimal bidAmount, DateTime biddingDate,
+            long id)
         {
-            this.Auction = auction;
+            //this.Auction = auction;
+            this.AuctionId = auction.Id;
             this.Bidder = bidder;
             this.BidAmount = bidAmount;
             this.BiddingDate = biddingDate;
+            Id = id;
         }
-        
-        public long AuctionId { get; set; }
 
-        public virtual Auction Auction { get; } = default!;
-
-        public string Bidder { get; protected set; } = default!;
-
+        public long AuctionId { get; protected set; }
+        public string Bidder { get; protected set; } = null!;
         public decimal BidAmount { get; protected set; }
-
         public DateTime BiddingDate { get; protected set; }
+
+        public virtual Auction Auction { get; protected set; } = null!;
     }
 }

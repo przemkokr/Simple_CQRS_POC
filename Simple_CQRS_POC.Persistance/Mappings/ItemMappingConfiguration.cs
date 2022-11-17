@@ -11,7 +11,7 @@ namespace Simple_CQRS_POC.Persistance.Mappings
             builder.ToTable("Item")
                 .HasKey(x => x.Id);
 
-            builder.HasOne(x => x.Auction).WithOne(x => x.AuctionItem);
+            builder.HasOne(x => x.Auction).WithOne(x => x.Item);
         }
     }
 }
