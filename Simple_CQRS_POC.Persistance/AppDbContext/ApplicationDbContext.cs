@@ -51,10 +51,10 @@ namespace Simple_CQRS_POC.Persistance.AppDbContext
 
                 entity.Property(e => e.Title).HasMaxLength(1006);
 
-                foreach (var item in SampleDataInitilizer.DataFeed())
-                {
-                    entity.HasData(item);
-                }
+                //foreach (var item in SampleDataInitilizer.DataFeed())
+                //{
+                //    entity.HasData(item);
+                //}
             });
 
             modelBuilder.Entity<Bid>(entity =>
@@ -69,10 +69,10 @@ namespace Simple_CQRS_POC.Persistance.AppDbContext
                     .WithMany(p => p.Bids)
                     .HasForeignKey(d => d.AuctionId);
 
-                foreach (var item in bidsFeed)
-                {
-                    entity.HasData(item);
-                }
+                //foreach (var item in bidsFeed)
+                //{
+                //    entity.HasData(item);
+                //}
             });
 
             modelBuilder.Entity<Item>(entity =>
@@ -87,10 +87,10 @@ namespace Simple_CQRS_POC.Persistance.AppDbContext
                     .HasForeignKey<Item>(d => d.AuctionId);
 
 
-                foreach (var item in itemsFeed)
-                {
-                    entity.HasData(item);
-                }
+                //foreach (var item in itemsFeed)
+                //{
+                //    entity.HasData(item);
+                //}
             }
             );
 

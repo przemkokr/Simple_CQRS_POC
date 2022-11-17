@@ -7,14 +7,14 @@ namespace Simple_CQRS_POC.Domain.Entities
         protected Bid() { }
 
         public Bid(Auction auction, string bidder, decimal bidAmount, DateTime biddingDate,
-            long id)
+            long? id)
         {
             //this.Auction = auction;
             this.AuctionId = auction.Id;
             this.Bidder = bidder;
             this.BidAmount = bidAmount;
             this.BiddingDate = biddingDate;
-            Id = id;
+            if(id!=null) Id = (long)id;
         }
 
         public long AuctionId { get; protected set; }

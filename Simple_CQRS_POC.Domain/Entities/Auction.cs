@@ -55,7 +55,7 @@ namespace Simple_CQRS_POC.Domain.Entities
 
         public void AddBid(string bidder, decimal bidAmount)
         {            
-            this.Bids.Add(new Bid(this, bidder, bidAmount, DateTime.Now, (new Random()).Next(1000, 1000000)));
+            this.Bids.Add(new Bid(this, bidder, bidAmount, DateTime.Now, null));
 
             Winner = bidder;
             CurrentValue = bidAmount;
